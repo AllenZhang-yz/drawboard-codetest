@@ -1,16 +1,18 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	color: #bfc1c8;
-	font-size: 16px;
-	font-family: "Roboto", sans-serif;
-	line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  color: #bfc1c8;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
 }
 body input,
 button {
-	border: none;
-	font-size: 100%;
-	outline: none;
+  border: none;
+  font-size: 100%;
+  outline: none;
 }

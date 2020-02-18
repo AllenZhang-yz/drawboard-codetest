@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import logo from "../asset/logo.png";
 
@@ -21,13 +21,13 @@ const HeaderTitle = styled.h1`
   vertical-align: middle;
 `;
 
-const Header = () => {
+const Header = memo(() => {
   return (
     <HeaderWrapper>
       <Img src={logo} alt="logo" />
       <HeaderTitle>Air Quality Index</HeaderTitle>
     </HeaderWrapper>
   );
-};
+});
 
 export default Header;

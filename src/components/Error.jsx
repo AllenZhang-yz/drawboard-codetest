@@ -1,18 +1,20 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
 
 const ErrorWrapper = styled.div`
+  height: 400px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
-function Error() {
+const Error = memo(() => {
   return (
     <ErrorWrapper>
-      <Chip label="Sorry, something went wrong..." color="secondary" />
+      <Chip label="Sorry, can not get the AQI data..." color="secondary" />
     </ErrorWrapper>
   );
-}
+});
 
 export default Error;

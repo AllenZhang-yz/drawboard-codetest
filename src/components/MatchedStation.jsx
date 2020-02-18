@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import {
   searchInputHandler,
   toggleShowMatchedStations
@@ -15,13 +16,13 @@ const StyledMatchedStation = styled.div`
   }
 `;
 
-const MatchedStation = ({ item, selectStation }) => {
+const MatchedStation = memo(({ item, selectStation }) => {
   return (
     <StyledMatchedStation onClick={() => selectStation(item)}>
       {item}
     </StyledMatchedStation>
   );
-};
+});
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -30,6 +31,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(toggleShowMatchedStations(false));
     }
   };
+};
+
+MatchedStation.propTypes = {
+  item: PropTypes.string,
+  selectStation: PropTypes.func.isRequired
 };
 
 export default connect(null, mapDispatchToProps)(MatchedStation);

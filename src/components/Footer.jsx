@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 const FooterWrapper = styled.div`
@@ -7,9 +7,14 @@ const FooterWrapper = styled.div`
     margin: 3px auto;
     text-align: center;
   }
+  @media only screen and (max-width: 800px) {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+  }
 `;
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <FooterWrapper>
       <p>
@@ -17,6 +22,6 @@ const Footer = () => {
       </p>
     </FooterWrapper>
   );
-};
+});
 
 export default Footer;
