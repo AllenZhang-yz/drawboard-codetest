@@ -24,14 +24,12 @@ const MatchedStation = memo(({ item, selectStation }) => {
   );
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    selectStation: item => {
-      dispatch(searchInputHandler(item));
-      dispatch(toggleShowMatchedStations(false));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  selectStation: item => {
+    dispatch(searchInputHandler(item));
+    dispatch(toggleShowMatchedStations(false));
+  }
+});
 
 MatchedStation.propTypes = {
   item: PropTypes.string,

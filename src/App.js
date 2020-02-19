@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -8,6 +8,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
+import { getAQIHandler } from "./store/actionCreators";
 
 const AppWrapper = styled.div`
   background: #323544;
@@ -24,10 +25,13 @@ const AppWrapper = styled.div`
   }
 `;
 
-const App = ({ isLoadingAQI, hasError }) => {
+const App = ({ isLoadingAQI, hasError, loadAQIForTheFirstTime }) => {
   const renderMain = () => {
     return !hasError ? <Main /> : <Error />;
   };
+  useEffect(() => {
+    loadAQIForTheFirstTime("melbourne");
+  }, [loadAQIForTheFirstTime]);
   return (
     <AppWrapper>
       <Header />
@@ -39,8 +43,12 @@ const App = ({ isLoadingAQI, hasError }) => {
 };
 
 const mapStateToProps = state => ({
-  isLoadingAQI: state.get("isLoadingAQI"),
-  hasError: state.get("hasError")
+  isLoadingAQI: state.getIn(["AQI", "isLoadingAQI"]),
+  hasError: state.getIn(["AQI", "hasError"])
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadAQIForTheFirstTime: defaultCity => dispatch(getAQIHandler(defaultCity))
 });
 
 App.propTypes = {
@@ -48,4 +56,4 @@ App.propTypes = {
   hasError: PropTypes.bool
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

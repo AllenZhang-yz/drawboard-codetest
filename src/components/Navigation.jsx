@@ -83,7 +83,7 @@ const Navigation = memo(
                 300
               );
             }}
-            placeholder="Search..."
+            placeholder="Melbourne"
             onChange={changeInputValue}
             value={inputValue}
           />
@@ -106,35 +106,31 @@ const Navigation = memo(
   }
 );
 
-const mapStateToProps = state => {
-  return {
-    inputValue: state.get("inputValue"),
-    matchedStations: state.get("matchedStations"),
-    showMatchedStations: state.get("showMatchedStations")
-  };
-};
+const mapStateToProps = state => ({
+  inputValue: state.getIn(["nav", "inputValue"]),
+  matchedStations: state.getIn(["nav", "matchedStations"]),
+  showMatchedStations: state.getIn(["nav", "showMatchedStations"])
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeInputValue: e => dispatch(searchInputHandler(e.target.value)),
-    getMatchedStations: inputValue => {
-      dispatch(getMatchedStations(inputValue));
-      inputValue.length > 0
-        ? dispatch(toggleShowMatchedStations(true))
-        : dispatch(toggleShowMatchedStations(false));
-    },
-    getAQI: inputValue => {
-      dispatch(getAQIHandler(inputValue));
-      dispatch(toggleShowMatchedStations(false));
-      dispatch(toggleIsLoadingAQI(true));
-    },
-    clearSearchBar: () => {
-      dispatch(searchInputHandler(""));
-      dispatch(getMatchedStations(""));
-      dispatch(toggleShowMatchedStations(false));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  changeInputValue: e => dispatch(searchInputHandler(e.target.value)),
+  getMatchedStations: inputValue => {
+    dispatch(getMatchedStations(inputValue));
+    inputValue.length > 0
+      ? dispatch(toggleShowMatchedStations(true))
+      : dispatch(toggleShowMatchedStations(false));
+  },
+  getAQI: inputValue => {
+    dispatch(getAQIHandler(inputValue));
+    dispatch(toggleShowMatchedStations(false));
+    dispatch(toggleIsLoadingAQI(true));
+  },
+  clearSearchBar: () => {
+    dispatch(searchInputHandler(""));
+    dispatch(getMatchedStations(""));
+    dispatch(toggleShowMatchedStations(false));
+  }
+});
 
 Navigation.propTypes = {
   changeInputValue: PropTypes.func.isRequired,

@@ -59,77 +59,76 @@ const EPA = styled.div`
   margin: 0 0 15px 50px;
 `;
 
-const Main = memo(({ hideMatchedStations, AQIData }) => {
-  return (
-    <MainWrapper onClick={hideMatchedStations}>
-      {AQIData && (
-        <AQIWrapper>
-          <BasicInfo>
+const Main = memo(
+  ({ hideMatchedStations, loadAQIForTheFirstTime, AQIData }) => {
+    return (
+      <MainWrapper onClick={hideMatchedStations}>
+        {AQIData && (
+          <AQIWrapper>
+            <BasicInfo>
+              <ItemWrapper>
+                <LocationCityRoundedIcon fontSize="large" />
+                <TextWrapper>
+                  City: <Value>{AQIData.city.name}</Value>
+                </TextWrapper>
+              </ItemWrapper>
+              <ItemWrapper>
+                <ExploreIcon fontSize="large" />
+                <TextWrapper>
+                  Latitude: <Value>{AQIData.city.geo[0].toFixed(3)}</Value>,
+                  Longitude: <Value>{AQIData.city.geo[1].toFixed(3)}</Value>
+                </TextWrapper>
+              </ItemWrapper>
+              <ItemWrapper>
+                <HistoryIcon fontSize="large" />
+                <TextWrapper>
+                  Time Zone: <Value>{AQIData.time.tz}</Value>
+                </TextWrapper>
+              </ItemWrapper>
+              <ItemWrapper>
+                <QueryBuilderIcon fontSize="large" />
+                <TextWrapper>
+                  Local Time: <Value>{AQIData.time.s}</Value>
+                </TextWrapper>
+              </ItemWrapper>
+              <ItemWrapper>
+                <CloudQueueIcon fontSize="large" />
+                <TextWrapper>
+                  {" "}
+                  PM2.5: <AQIValue aqi={AQIData.aqi}>{AQIData.aqi}</AQIValue>
+                </TextWrapper>
+              </ItemWrapper>
+              <ItemWrapper>
+                <WbCloudyRoundedIcon fontSize="large" />
+                <TextWrapper>
+                  {" "}
+                  PM10:{" "}
+                  <Value>{AQIData.iaqi.pm10 && AQIData.iaqi.pm10.v}</Value>
+                </TextWrapper>
+              </ItemWrapper>
+            </BasicInfo>
             <ItemWrapper>
-              <LocationCityRoundedIcon fontSize="large" />
-              <TextWrapper>
-                City: <Value>{AQIData.city.name}</Value>
-              </TextWrapper>
+              <AccountBalanceRoundedIcon fontSize="large" />
+              <EPAInfo>EPA Info:</EPAInfo>
             </ItemWrapper>
-            <ItemWrapper>
-              <ExploreIcon fontSize="large" />
-              <TextWrapper>
-                Latitude: <Value>{AQIData.city.geo[0].toFixed(3)}</Value>,
-                Longitude: <Value>{AQIData.city.geo[1].toFixed(3)}</Value>
-              </TextWrapper>
-            </ItemWrapper>
-            <ItemWrapper>
-              <HistoryIcon fontSize="large" />
-              <TextWrapper>
-                Time Zone: <Value>{AQIData.time.tz}</Value>
-              </TextWrapper>
-            </ItemWrapper>
-            <ItemWrapper>
-              <QueryBuilderIcon fontSize="large" />
-              <TextWrapper>
-                Local Time: <Value>{AQIData.time.s}</Value>
-              </TextWrapper>
-            </ItemWrapper>
-            <ItemWrapper>
-              <CloudQueueIcon fontSize="large" />
-              <TextWrapper>
-                {" "}
-                PM2.5: <AQIValue aqi={AQIData.aqi}>{AQIData.aqi}</AQIValue>
-              </TextWrapper>
-            </ItemWrapper>
-            <ItemWrapper>
-              <WbCloudyRoundedIcon fontSize="large" />
-              <TextWrapper>
-                {" "}
-                PM10: <Value>{AQIData.iaqi.pm10 && AQIData.iaqi.pm10.v}</Value>
-              </TextWrapper>
-            </ItemWrapper>
-          </BasicInfo>
-          <ItemWrapper>
-            <AccountBalanceRoundedIcon fontSize="large" />
-            <EPAInfo>EPA Info:</EPAInfo>
-          </ItemWrapper>
 
-          {AQIData.attributions.map((item, index) => (
-            <EPA key={index}>{item.name}</EPA>
-          ))}
-        </AQIWrapper>
-      )}
-    </MainWrapper>
-  );
+            {AQIData.attributions.map((item, index) => (
+              <EPA key={index}>{item.name}</EPA>
+            ))}
+          </AQIWrapper>
+        )}
+      </MainWrapper>
+    );
+  }
+);
+
+const mapStateToProps = state => ({
+  AQIData: state.getIn(["AQI", "AQIData"])
 });
 
-const mapStateToProps = state => {
-  return {
-    AQIData: state.get("AQIData")
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    hideMatchedStations: () => dispatch(toggleShowMatchedStations(false))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  hideMatchedStations: () => dispatch(toggleShowMatchedStations(false))
+});
 
 Main.propTypes = {
   hideMatchedStations: PropTypes.func.isRequired,
