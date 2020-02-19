@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
 
-const ErrorWrapper = styled.div`
+export const ErrorWrapper = styled.div`
   height: 400px;
   display: flex;
   justify-content: center;

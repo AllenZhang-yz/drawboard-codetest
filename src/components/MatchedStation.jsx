@@ -7,7 +7,7 @@ import {
   toggleShowMatchedStations
 } from "../store/actionCreators";
 
-const StyledMatchedStation = styled.div`
+export const StyledMatchedStation = styled.div`
   font-size: 14px;
   margin-left: 5px;
   :hover {

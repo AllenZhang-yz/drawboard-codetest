@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 
-const FooterWrapper = styled.div`
+export const FooterWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.1);
   p {
     margin: 3px auto;

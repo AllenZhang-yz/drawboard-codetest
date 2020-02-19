@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const LoaderWrapper = styled.div`
+export const LoaderWrapper = styled.div`
   height: 400px;
   display: flex;
   justify-content: center;

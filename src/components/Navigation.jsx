@@ -12,13 +12,13 @@ import {
   toggleIsLoadingAQI
 } from "../store/actionCreators";
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
   padding: 0.8rem 0 0.8rem 1rem;
   display: flex;
   align-items: center;
 `;
-const Input = styled.input`
+export const Input = styled.input`
   font-size: 100%;
   border-radius: 30px;
   background-color: #1e202b;
@@ -28,13 +28,13 @@ const Input = styled.input`
   transition: width 1s;
 `;
 
-const StyledCancelRoundedIcon = styled(CancelRoundedIcon)`
+export const StyledCancelRoundedIcon = styled(CancelRoundedIcon)`
   margin-left: -28px;
   opacity: 0.5;
   visibility: ${props => (props.visible > 0 ? "visible" : "hidden")};
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `;
 
-const MatchedStations = styled.div`
+export const MatchedStations = styled.div`
   position: absolute;
   width: 330px;
   max-height: 400px;
