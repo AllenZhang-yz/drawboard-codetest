@@ -1,68 +1,43 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### This project is deployed on Netlify
 
-In the project directory, you can run:
+Please visit https://drawboard-codetest.netlify.com/ to play around.
 
-### `yarn start`
+### Run this project locally
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. git clone https://github.com/AllenZhang-yz/drawboard-codetest.git
+2. Open with VS Code or any IDE
+3. run "npm install"
+4. run "npm start"
+5. Open (http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Run Test
 
-### `yarn test`
+1. Open with VS Code or any IDE
+2. npm run test
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Functionality of this App
 
-### `yarn build`
+1. When the page loads for the first time, it will show the AQI data of Melbourne by default.
+2. When you type a city in the navigation search bar, there are station/city hints showing up below automatically.
+3. You can click one station/city, and this will show up on the search bar.
+4. You can ignore the station/city hints below and press Enter or click Submit directly with what you have entered.
+5. Station/city hints will disappear if you have clicked one, submitted request or clicked somewhere else.
+6. When the search bar is on focus, it will become longer, if it is on blur, it will become shorter.
+7. When you type something in the search bar, there is a small cross showing up to the right, you can click it to clear the search bar.
+8. When you clear the search bar manually, the cross will also disappear automatically.
+9. When you click Submit or press Enter, the AQI data will show up (if the data could be fetched).
+10. When the data is being fetched, a spinner will show up.
+11. The PM2.5 data will show in different colors accordingly.
+    If PM2.5 < 50, it will be shown in green colour and a smile face.
+    If 50 < PM2.5 < 100, it will be shown in orange colour and a neutral face.
+    If 100 < PM2.5, it will be shown in red colour and a sad face.
+12. If the AQI data can not be fetched, whether it is an invalid city/station name or network issue, an error message will show up.
+13. The web page has responsive design, it can show properly both on desktops and cell phones.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+NOTE: Not all city/station hints can fetch data from backend correctly, error messages may show up.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Skills used in this App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+React, Redux, Redux-thunk, immutablejs, material UI, axios, PropTypes, styled-components, axios, Jest, Enzyme, Netlify
