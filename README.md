@@ -40,4 +40,4 @@ NOTE: Not all city/station hints can fetch data from backend correctly, error me
 
 ### Skills used in this App
 
-React, Redux, Redux-thunk, immutablejs, material UI, axios, PropTypes, styled-components, axios, Jest, Enzyme, Netlify
+React, React Hooks, Redux, Redux-thunk, immutablejs, material UI, axios, PropTypes, styled-components, axios, Jest, Enzyme, Netlify
